@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xinjie Zhou · Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #07070f;
+  --bg2: #0d0d1a;
+  --bg3: #111124;
+  --surface: rgba(255,255,255,0.04);
+  --surface2: rgba(255,255,255,0.07);
+  --border: rgba(255,255,255,0.08);
+  --border2: rgba(255,255,255,0.14);
+  --text: #f0eeff;
+  --text2: rgba(240,238,255,0.55);
+  --text3: rgba(240,238,255,0.3);
+  --purple: #a78bfa;
+  --purple2: #7c3aed;
+  --cyan: #22d3ee;
+  --cyan2: #0891b2;
+  --pink: #f472b6;
+  --green: #4ade80;
+  --grad1: linear-gradient(135deg, #a78bfa, #22d3ee);
+  --grad2: linear-gradient(135deg, #f472b6, #a78bfa);
+  --grad3: linear-gradient(135deg, #22d3ee, #4ade80);
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ─── NOISE TEXTURE OVERLAY ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* ─── NAVIGATION ─── */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 1.25rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  background: rgba(7,7,15,0.8);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  background: var(--grad1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+.lang-btn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--border2);
+  border-radius: 100px;
+  background: var(--surface);
+  color: var(--text2);
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.05em;
+}
+.lang-btn:hover {
+  border-color: var(--purple);
+  color: var(--purple);
+}
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 2.5rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+}
+.hero-glow-1 {
+  width: 600px; height: 600px;
+  background: rgba(124,58,237,0.18);
+  top: -100px; left: -100px;
+}
+.hero-glow-2 {
+  width: 500px; height: 500px;
+  background: rgba(34,211,238,0.12);
+  bottom: -50px; right: -50px;
+}
+.hero-glow-3 {
+  width: 300px; height: 300px;
+  background: rgba(244,114,182,0.1);
+  top: 40%; left: 50%;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--cyan);
+  border: 1px solid rgba(34,211,238,0.3);
+  border-radius: 100px;
+  padding: 0.35rem 1rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.hero-tag::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.hero-name span {
+  display: block;
+  background: var(--grad1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-role {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  color: var(--text2);
+  margin-bottom: 1.75rem;
+  min-height: 2rem;
+}
+
+.hero-role .role-word {
+  color: var(--purple);
+  font-weight: 600;
+}
+
+.hero-desc {
+  font-size: 1rem;
+  color: var(--text2);
+  max-width: 460px;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+
+.hero-desc.zh { display: none; }
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 100px;
+  border: 1px solid var(--border2);
+  color: var(--text2);
+  font-family: var(--font-mono);
+  letter-spacing: 0.03em;
+}
+
+.badge.purple { border-color: rgba(167,139,250,0.4); color: var(--purple); }
+.badge.cyan { border-color: rgba(34,211,238,0.4); color: var(--cyan); }
+.badge.pink { border-color: rgba(244,114,182,0.4); color: var(--pink); }
+
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  padding: 0.85rem 2rem;
+  border-radius: 100px;
+  background: var(--grad1);
+  color: #07070f;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s, transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
+.btn-outline {
+  padding: 0.85rem 2rem;
+  border-radius: 100px;
+  border: 1px solid var(--border2);
+  color: var(--text);
+  font-weight: 400;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-outline:hover { border-color: var(--purple); transform: translateY(-1px); }
+
+/* Hero photo */
+.hero-photo-wrap {
+  position: relative;
+}
+
+.hero-photo-frame {
+  position: relative;
+  width: 340px;
+  height: 420px;
+  margin: 0 auto;
+}
+
+.hero-photo-frame::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 24px;
+  background: var(--grad1);
+  z-index: 0;
+}
+
+.hero-photo-placeholder {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 22px;
+  background: var(--bg3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.hero-initials {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 800;
+  background: var(--grad1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.hero-photo-caption {
+  font-size: 0.75rem;
+  color: var(--text3);
+  font-family: var(--font-mono);
+  text-align: center;
+  padding: 0 2rem;
+  line-height: 1.5;
+}
+
+.hero-stat-card {
+  position: absolute;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 14px;
+  padding: 0.85rem 1.1rem;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.hero-stat-card.card-1 {
+  bottom: -20px; left: -30px;
+}
+.hero-stat-card.card-2 {
+  top: -20px; right: -30px;
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: var(--grad1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--text3);
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+/* ─── SECTIONS COMMON ─── */
+section {
+  padding: 6rem 2.5rem;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.section-title .accent {
+  background: var(--grad1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── ABOUT ─── */
+#about {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-text p {
+  color: var(--text2);
+  font-size: 1rem;
+  line-height: 1.85;
+  margin-bottom: 1.25rem;
+}
+.about-text p.zh { display: none; }
+
+.about-highlight {
+  display: inline;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.about-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.skill-group-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 0.5rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  font-size: 0.8rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  transition: all 0.2s;
+}
+.skill-tag:hover {
+  background: var(--surface2);
+  border-color: var(--border2);
+  color: var(--text);
+}
+
+/* ─── WORKS ─── */
+#works {}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.work-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.3s, transform 0.3s;
+  text-decoration: none;
+  display: block;
+}
+
+.work-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-4px);
+}
+
+.work-card.featured {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.work-img {
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--bg3);
+  position: relative;
+}
+
+.work-card.featured .work-img {
+  aspect-ratio: auto;
+  min-height: 320px;
+}
+
+.work-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.5s;
+  display: block;
+}
+
+.work-card:hover .work-img img {
+  transform: scale(1.03);
+}
+
+.work-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  opacity: 0.15;
+  color: var(--text);
+}
+
+.work-info {
+  padding: 1.75rem;
+}
+
+.work-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.work-tag {
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.65rem;
+  border-radius: 100px;
+  border: 1px solid var(--border2);
+  color: var(--text3);
+  text-transform: uppercase;
+}
+
+.work-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.work-desc {
+  font-size: 0.875rem;
+  color: var(--text2);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+.work-desc.zh { display: none; }
+
+.work-highlight {
+  font-size: 0.8rem;
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.work-highlight::before { content: '→ '; }
+
+/* ─── EXPERIENCE ─── */
+#experience {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.exp-timeline {
+  margin-top: 3rem;
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.exp-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--purple), var(--cyan), transparent);
+}
+
+.exp-item {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.exp-item::before {
+  content: '';
+  position: absolute;
+  left: -2.5rem;
+  top: 8px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--purple);
+  border: 2px solid var(--bg2);
+  box-shadow: 0 0 12px rgba(167,139,250,0.6);
+}
+
+.exp-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.exp-role {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.exp-company {
+  color: var(--purple);
+  font-weight: 400;
+}
+
+.exp-time {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text3);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.exp-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.exp-bullets li {
+  font-size: 0.875rem;
+  color: var(--text2);
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.65;
+}
+
+.exp-bullets li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--cyan);
+}
+
+.exp-bullets li.zh { display: none; }
+
+/* ─── CONTACT ─── */
+#contact {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,58,237,0.15), transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.contact-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 1.25rem;
+}
+
+.contact-subtitle {
+  color: var(--text2);
+  font-size: 1rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+.contact-subtitle.zh { display: none; }
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 100px;
+  border: 1px solid var(--border2);
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+  font-family: var(--font-mono);
+  letter-spacing: 0.03em;
+}
+.contact-link:hover {
+  border-color: var(--purple);
+  color: var(--purple);
+  background: rgba(167,139,250,0.06);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 1.75rem 2.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text3);
+  letter-spacing: 0.05em;
+}
+
+/* ─── SCROLL FADE IN ─── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--border2);
+  border-radius: 3px;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.25rem; }
+  .nav-links { display: none; }
+  #hero { padding: 7rem 1.25rem 3rem; }
+  .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-photo-wrap { order: -1; }
+  .hero-photo-frame { width: 240px; height: 300px; }
+  section { padding: 4rem 1.25rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .works-grid { grid-template-columns: 1fr; }
+  .work-card.featured { grid-column: span 1; display: block; }
+  .work-card.featured .work-img { min-height: 200px; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">XZ</a>
+  <ul class="nav-links">
+    <li><a href="#about" data-en="About" data-zh="关于">About</a></li>
+    <li><a href="#works" data-en="Works" data-zh="项目">Works</a></li>
+    <li><a href="#experience" data-en="Experience" data-zh="经历">Experience</a></li>
+    <li><a href="#contact" data-en="Contact" data-zh="联系">Contact</a></li>
+  </ul>
+  <button class="lang-btn" id="langToggle">中文</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="hero-glow hero-glow-3"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">Available for opportunities</div>
+      <h1 class="hero-name">
+        Hi, I'm<br>
+        <span>Xinjie Zhou</span>
+      </h1>
+      <p class="hero-role">
+        <span class="role-word" id="roleWord">Product Designer</span>
+        <span class="en"> · Researcher · Marketer</span>
+        <span class="zh" style="display:none"> · 研究员 · 营销人</span>
+      </p>
+      <p class="hero-desc en">
+        Cognitive Science from UCSD × Product Design at USC IYA. I craft digital experiences grounded in human behavior — bridging user research, interaction design, and growth strategy.
+      </p>
+      <p class="hero-desc zh" style="display:none">
+        UCSD认知科学背景 × 南加大IYA研究生在读。我将用户研究、交互设计与增长策略融为一体，打造有温度的产品体验。
+      </p>
+      <div class="hero-badges">
+        <span class="badge purple">USC IYA '26</span>
+        <span class="badge cyan">UCSD Cognitive Science</span>
+        <span class="badge">Figma</span>
+        <span class="badge">UX Research</span>
+        <span class="badge">中英双语</span>
+      </div>
+      <div class="hero-ctas">
+        <a href="#works" class="btn-primary en">View My Work →</a>
+        <a href="#works" class="btn-primary zh" style="display:none">查看项目 →</a>
+        <a href="mailto:xinjiezhoudesign@outlook.com" class="btn-outline en">Get in Touch</a>
+        <a href="mailto:xinjiezhoudesign@outlook.com" class="btn-outline zh" style="display:none">联系我</a>
+      </div>
+    </div>
+
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-frame">
+        <img src="photo.jpg" alt="Xinjie Zhou" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:22px;position:relative;z-index:1;display:block;">
+      </div>
+      <div class="hero-stat-card card-1">
+        <div class="stat-num">4+</div>
+        <div class="stat-label en">Projects</div>
+        <div class="stat-label zh" style="display:none">项目经历</div>
+      </div>
+      <div class="hero-stat-card card-2">
+        <div class="stat-num">2+</div>
+        <div class="stat-label en">Years Exp</div>
+        <div class="stat-label zh" style="display:none">年经验</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid fade-up">
+      <div class="about-text">
+        <p class="section-tag">/ WHO I AM</p>
+        <h2 class="section-title">Designing with <span class="accent">science</span> at the core</h2>
+        <p class="en">
+          I'm a <span class="about-highlight">Product Designer</span> with a Cognitive Science background from UC San Diego, now pursuing my graduate studies at USC's Integrated Media Arts program. My academic foundation in how humans perceive, think, and decide directly shapes every design decision I make.
+        </p>
+        <p class="zh" style="display:none">
+          我是一名<span class="about-highlight">产品设计师</span>，本科就读于加州大学圣地亚哥分校认知科学专业，目前在南加大IYA项目攻读研究生学位。认知科学的学术背景让我从人类感知与决策的角度出发，深刻影响着每一个设计决策。
+        </p>
+        <p class="en">
+          What sets me apart is the rare combination of <span class="about-highlight">UX research depth, visual design craft, and marketing intuition</span>. I've led end-to-end product design across consumer apps, while simultaneously running multi-platform marketing campaigns in both North American and Chinese markets.
+        </p>
+        <p class="zh" style="display:none">
+          我的独特之处在于将<span class="about-highlight">深度用户研究、视觉设计能力与市场营销直觉</span>融为一体。我曾主导多个消费类应用的端到端产品设计，同时在中美两个市场运营多平台营销活动。
+        </p>
+        <p class="en">
+          I'm fluent in both English and Mandarin, skateboard in my downtime, and believe the best products are built at the intersection of empathy and data.
+        </p>
+        <p class="zh" style="display:none">
+          我中英双语流利，业余时间喜欢滑板，相信最好的产品诞生于同理心与数据的交汇处。
+        </p>
+      </div>
+      <div class="about-skills">
+        <div>
+          <p class="skill-group-label en">Design & Prototyping</p>
+          <p class="skill-group-label zh" style="display:none">设计与原型</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Adobe Photoshop</span>
+            <span class="skill-tag">Wireframing</span>
+            <span class="skill-tag">High-Fidelity UI</span>
+            <span class="skill-tag">Design Systems</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-group-label en">Research Methods</p>
+          <p class="skill-group-label zh" style="display:none">研究方法</p>
+          <div class="skill-tags">
+            <span class="skill-tag">User Interviews</span>
+            <span class="skill-tag">A/B Testing</span>
+            <span class="skill-tag">Usability Testing</span>
+            <span class="skill-tag">Surveys & Surveys</span>
+            <span class="skill-tag">Journey Mapping</span>
+            <span class="skill-tag">Persona Creation</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-group-label en">Marketing & Growth</p>
+          <p class="skill-group-label zh" style="display:none">营销与增长</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Instagram</span>
+            <span class="skill-tag">TikTok</span>
+            <span class="skill-tag">小红书 RED</span>
+            <span class="skill-tag">Discord</span>
+            <span class="skill-tag">Google Analytics</span>
+            <span class="skill-tag">Content Strategy</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-group-label en">Languages & Other</p>
+          <p class="skill-group-label zh" style="display:none">语言与其他</p>
+          <div class="skill-tags">
+            <span class="skill-tag">English (Fluent)</span>
+            <span class="skill-tag">中文 (Native)</span>
+            <span class="skill-tag">Python</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="container">
+    <div class="fade-up">
+      <p class="section-tag">/ SELECTED WORKS</p>
+      <h2 class="section-title">Projects that <span class="accent">matter</span></h2>
+    </div>
+    <div class="works-grid fade-up">
+
+      <!-- Ditto AI - FEATURED -->
+      <div class="work-card featured">
+        <div class="work-img">
+          <img src="ditto-poster.png" alt="Ditto AI" loading="lazy" style="object-position:center center;">
+        </div>
+        <div class="work-info">
+          <div class="work-tags">
+            <span class="work-tag">Marketing Lead</span>
+            <span class="work-tag">Brand Strategy</span>
+            <span class="work-tag">Growth</span>
+            <span class="work-tag" style="border-color:rgba(167,139,250,0.5);color:var(--purple);">$10M+ Funded</span>
+          </div>
+          <h3 class="work-title">Ditto AI</h3>
+          <p class="work-desc en">
+            Leading all marketing at Ditto AI — a venture-backed AI app with $10M+ in funding. Manage a team of interns, own social media across Instagram, TikTok, Discord, and Xiaohongshu, and drive online campaigns and offline events to grow brand presence across North American and Chinese markets.
+          </p>
+          <p class="work-desc zh" style="display:none">
+            主导 Ditto AI 全方位营销工作——一家获得千万美元融资的AI明星公司。管理实习生团队，负责Instagram、TikTok、Discord及小红书内容运营，同时策划线上推广与线下活动，驱动中美两市场品牌增长。
+          </p>
+          <p class="work-highlight en">Marketing Manager · Jan 2025 – Present · <a href="https://ditto.ai/" target="_blank" style="color:var(--cyan);text-decoration:none;">ditto.ai ↗</a></p>
+          <p class="work-highlight zh" style="display:none">营销总监 · 2025年1月至今 · <a href="https://ditto.ai/" target="_blank" style="color:var(--cyan);text-decoration:none;">ditto.ai ↗</a></p>
+        </div>
+      </div>
+
+      <!-- Petkeley - FEATURED -->
+      <div class="work-card featured">
+        <div class="work-img">
+          <img src="petkeley-hero.png" alt="Petkeley Project" loading="lazy">
+        </div>
+        <div class="work-info">
+          <div class="work-tags">
+            <span class="work-tag">UI/UX Design</span>
+            <span class="work-tag">User Research</span>
+            <span class="work-tag">AR/VR</span>
+          </div>
+          <h3 class="work-title">Petkeley</h3>
+          <p class="work-desc en">
+            A virtual campus social platform where AI-powered virtual pets connect Berkeley students based on shared interests and daily schedules. Led comprehensive user research across 3 research cases — from MBTI-based personality matching to map accuracy studies — resulting in key UI iterations and feature refinements.
+          </p>
+          <p class="work-desc zh" style="display:none">
+            一款虚拟校园社交平台，AI虚拟宠物根据共同兴趣和日常生活连接伯克利学生。主导3个用户研究案例，从MBTI性格匹配到地图精度研究，推动关键界面迭代与功能优化。
+          </p>
+          <p class="work-highlight en">Led UI/UX design + user research · Dec 2023 – Present</p>
+          <p class="work-highlight zh" style="display:none">主导 UI/UX 设计与用户研究 · 2023年12月至今</p>
+        </div>
+      </div>
+
+
+      <!-- Vibee -->
+      <div class="work-card">
+        <div class="work-img">
+          <img src="vibee.png" alt="Vibee" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+        </div>
+        <div class="work-info">
+          <div class="work-tags">
+            <span class="work-tag">UX Intern</span>
+            <span class="work-tag">Research</span>
+            <span class="work-tag">Prototyping</span>
+          </div>
+          <h3 class="work-title">Vibee · UC Berkeley</h3>
+          <p class="work-desc en">
+            Led user research including surveys, focus groups, and A/B testing. Created user personas and journey maps to guide wireframe and prototype design. Built high-fidelity prototypes refined through usability testing.
+          </p>
+          <p class="work-desc zh" style="display:none">
+            主导用户调研（问卷、焦点小组、A/B测试），创建用户画像和旅程地图，完成从低保真到高保真原型的全流程设计，并通过可用性测试持续迭代优化。
+          </p>
+          <p class="work-highlight en">UX Intern · Summer 2024 – Present</p>
+          <p class="work-highlight zh" style="display:none">UX实习生 · 2024年夏至今</p>
+        </div>
+      </div>
+
+      <!-- MemoHub -->
+      <div class="work-card">
+        <div class="work-img">
+          <img src="memohub-app.png" alt="MemoHub App" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="work-info">
+          <div class="work-tags">
+            <span class="work-tag">Product Design</span>
+            <span class="work-tag">Figma</span>
+            <span class="work-tag">iOS · App Store</span>
+          </div>
+          <h3 class="work-title">MemoHub</h3>
+          <p class="work-desc en">
+            Led user research and interviews to gather insights, ensuring the app's design aligned with user needs. Collaborated on product discussions, refined UI details, and iterated on Figma wireframes and prototypes based on feedback.
+          </p>
+          <p class="work-desc zh" style="display:none">
+            主导用户研究与访谈，确保产品设计与用户需求高度契合。深度参与产品讨论，在Figma中持续迭代线框图与原型，打磨UI细节与功能体验。
+          </p>
+          <p class="work-highlight en">UI/UX Designer · 2024 – Present · <a href="https://apps.apple.com/us/app/memohub/id6737453314" target="_blank" style="color:var(--cyan);text-decoration:none;">App Store ↗</a></p>
+          <p class="work-highlight zh" style="display:none">UI/UX设计师 · 2024年至今 · <a href="https://apps.apple.com/us/app/memohub/id6737453314" target="_blank" style="color:var(--cyan);text-decoration:none;">App Store ↗</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="fade-up">
+      <p class="section-tag">/ EXPERIENCE</p>
+      <h2 class="section-title">Where I've <span class="accent">built</span> things</h2>
+    </div>
+    <div class="exp-timeline fade-up">
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role en">Marketing Manager · <span class="exp-company">Ditto AI</span></div>
+            <div class="exp-role zh" style="display:none">营销总监 · <span class="exp-company">Ditto AI</span></div>
+          </div>
+          <div class="exp-time">Jan 2025 – Present · San Diego, CA</div>
+        </div>
+        <ul class="exp-bullets">
+          <li class="en">Lead the marketing team, managing a group of interns across all marketing functions</li>
+          <li class="zh" style="display:none">带领营销团队，管理多名实习生，统筹全方位营销工作</li>
+          <li class="en">Own social media presence on Instagram, TikTok, Discord, and Xiaohongshu (RED) — creating content and growing brand awareness</li>
+          <li class="zh" style="display:none">负责Instagram、TikTok、Discord及小红书的内容创作与品牌增长</li>
+          <li class="en">Oversee offline marketing including posters, club partnerships, and event planning from concept to execution</li>
+          <li class="zh" style="display:none">统筹线下营销，包括海报制作、俱乐部合作及活动全流程策划执行</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role en">UI/UX Design Intern · <span class="exp-company">Vibee · UC Berkeley</span></div>
+            <div class="exp-role zh" style="display:none">UI/UX设计实习生 · <span class="exp-company">Vibee · 加州大学伯克利分校</span></div>
+          </div>
+          <div class="exp-time">Summer 2024 – Present</div>
+        </div>
+        <ul class="exp-bullets">
+          <li class="en">Led user research including surveys, focus groups, and A/B testing to understand user needs</li>
+          <li class="zh" style="display:none">主导用户研究，包括问卷调查、焦点小组和A/B测试</li>
+          <li class="en">Created user personas and journey maps to inform wireframe and prototype design decisions</li>
+          <li class="zh" style="display:none">创建用户画像和旅程地图，指导线框图和原型设计决策</li>
+          <li class="en">Designed high-fidelity prototypes, refined through usability tests and interviews</li>
+          <li class="zh" style="display:none">设计高保真原型，通过可用性测试和访谈持续完善</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role en">UI/UX Designer · <span class="exp-company">MemoHub · UCSD</span></div>
+            <div class="exp-role zh" style="display:none">UI/UX设计师 · <span class="exp-company">MemoHub · 加州大学圣地亚哥分校</span></div>
+          </div>
+          <div class="exp-time">Summer 2024 – Present · San Diego</div>
+        </div>
+        <ul class="exp-bullets">
+          <li class="en">Led user research and interviews to gather insights ensuring design aligned with user needs</li>
+          <li class="zh" style="display:none">主导用户研究与访谈，确保设计与用户需求高度契合</li>
+          <li class="en">Collaborated on product discussions, refining UI details to improve functionality and UX</li>
+          <li class="zh" style="display:none">深度参与产品讨论，打磨UI细节以提升功能性和用户体验</li>
+          <li class="en">Used Figma to design and iterate on wireframes and prototypes based on user feedback</li>
+          <li class="zh" style="display:none">使用Figma设计并迭代线框图和原型，基于用户反馈持续优化</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role en">UI/UX Design Intern · <span class="exp-company">Petkeley · Berkeley</span></div>
+            <div class="exp-role zh" style="display:none">UI/UX设计实习生 · <span class="exp-company">Petkeley · 伯克利</span></div>
+          </div>
+          <div class="exp-time">Dec 2023 – Sep 2024 · 10 months</div>
+        </div>
+        <ul class="exp-bullets">
+          <li class="en">Improved iterative UI interface design with co-founders, integrating AR/VR elements</li>
+          <li class="zh" style="display:none">与联合创始人共同完善迭代UI界面设计，融入AR/VR元素</li>
+          <li class="en">Conducted in-depth user research and interviews to optimize product features</li>
+          <li class="zh" style="display:none">开展深度用户研究与访谈，优化产品功能和细节</li>
+          <li class="en">Managed social media presence across platforms alongside design responsibilities</li>
+          <li class="zh" style="display:none">在承担设计工作的同时，兼顾多平台社交媒体运营</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-glow"></div>
+  <div class="contact-inner fade-up">
+    <h2 class="contact-title">
+      <span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Let's make</span><br>
+      <span style="background:var(--grad2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">something great</span>
+    </h2>
+    <p class="contact-subtitle en">
+      Open to full-time roles, internships, and freelance collaborations.<br>Currently based in Los Angeles, CA · Available globally.
+    </p>
+    <p class="contact-subtitle zh" style="display:none">
+      欢迎全职、实习及自由合作机会。<br>目前在洛杉矶 · 接受全球机会。
+    </p>
+    <div class="contact-links">
+      <a href="mailto:xinjiezhoudesign@outlook.com" class="contact-link">
+        ✉ xinjiezhoudesign@outlook.com
+      </a>
+      <a href="https://www.linkedin.com/in/jessie-zhou-541287279/" target="_blank" class="contact-link">
+        ↗ LinkedIn
+      </a>
+      <a href="https://xinjiezhou.cargo.site/" target="_blank" class="contact-link">
+        ↗ Cargo Portfolio
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Xinjie Zhou · Product Designer</span>
+  <span class="en">Designed & built with intention.</span>
+  <span class="zh" style="display:none">用心设计，用心构建。</span>
+</footer>
+
+<script>
+// ─── LANGUAGE TOGGLE ───
+let isZh = false;
+const langBtn = document.getElementById('langToggle');
+
+langBtn.addEventListener('click', () => {
+  isZh = !isZh;
+  langBtn.textContent = isZh ? 'EN' : '中文';
+
+  document.querySelectorAll('.en').forEach(el => {
+    el.style.display = isZh ? 'none' : '';
+  });
+  document.querySelectorAll('.zh').forEach(el => {
+    el.style.display = isZh ? '' : 'none';
+  });
+
+  // fix block-level elements (p, li)
+  if (isZh) {
+    document.querySelectorAll('p.zh, li.zh').forEach(el => el.style.display = 'block');
+    document.querySelectorAll('span.zh').forEach(el => el.style.display = 'inline');
+  } else {
+    document.querySelectorAll('p.en, li.en').forEach(el => el.style.display = 'block');
+    document.querySelectorAll('span.en').forEach(el => el.style.display = 'inline');
+  }
+
+  document.documentElement.lang = isZh ? 'zh' : 'en';
+});
+
+// ─── ROLE WORD ANIMATION ───
+const roles = {
+  en: ['Product Designer', 'UX Researcher', 'Visual Designer', 'Brand Strategist'],
+  zh: ['产品设计师', 'UX研究员', '视觉设计师', '品牌策略师']
+};
+let roleIdx = 0;
+const roleWord = document.getElementById('roleWord');
+
+setInterval(() => {
+  roleWord.style.opacity = '0';
+  roleWord.style.transform = 'translateY(8px)';
+  setTimeout(() => {
+    roleIdx = (roleIdx + 1) % roles.en.length;
+    roleWord.textContent = isZh ? roles.zh[roleIdx] : roles.en[roleIdx];
+    roleWord.style.opacity = '1';
+    roleWord.style.transform = 'translateY(0)';
+  }, 300);
+}, 2800);
+
+roleWord.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+
+// ─── SCROLL FADE IN ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ─── NAV LINK SMOOTH SCROLL ───
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
